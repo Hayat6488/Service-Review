@@ -5,7 +5,7 @@ import logo from '../../../Assets/logo/logo.png'
 const Header = () => {
     return (
         <div>
-            <div className="navbar bg-base-100 px-10">
+            <div className="navbar bg-base-200 px-10">
                 <div className="navbar-start">
                     <img src={logo} className="h-10" alt="" />
                     <Link to='/'><h1 className='text-3xl font-semibold'>DHEKUR</h1></Link>
