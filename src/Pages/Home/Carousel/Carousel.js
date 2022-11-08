@@ -7,7 +7,7 @@ import img3 from '../../../Assets/Carousel/buffet-indian-food-spices.jpg'
 const Carousel = () => {
     return (
         <div>
-            <div className="carousel w-full carousel-custom mt-10">
+            <div className="carousel w-full carousel-custom">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src={img1} alt="" className="w-full h-full" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-20 top-1/2">
