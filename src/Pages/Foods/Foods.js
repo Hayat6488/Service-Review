@@ -14,9 +14,6 @@ const Foods = () => {
                     foods.map(food => <Food key={food._id} food={food}></Food>)
                 }
             </div>
-            <div className="card-actions justify-end mr-8 mt-4">
-                <button className="btn btn-primary px-8"><Link to='/foods'>See All</Link></button>
-            </div>
         </div>
         </div>
     );
