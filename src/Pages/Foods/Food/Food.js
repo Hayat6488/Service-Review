@@ -1,9 +1,10 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Food = ({food}) => {
 
-    const { img, price, ratings, serviceName, des } = food;
+    const { img, _id, price, ratings, serviceName, des } = food;
 
     return (
         <div className="card w-96 glass">
@@ -18,7 +19,7 @@ const Food = ({food}) => {
                     </div>
                 </div>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Learn more!</button>
+                    <button className="btn btn-primary"><Link to={`/foods/${_id}`}>Learn more!</Link></button>
                 </div>
             </div>
         </div>
