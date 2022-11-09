@@ -1,31 +1,37 @@
 import React, { useContext } from 'react';
 import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Register = () => {
 
-    const {signUp, signInBy, setUser, signInByFacebook} = useContext(AuthContext);
+    const { signUp, signInBy, setUser, signInByFacebook } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleGoogleSignIn = () => {
         signInBy()
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            setUser(user);
-        })
-        .catch(error => console.error('error: ', error))
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setUser(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => console.error('error: ', error))
 
     }
 
     const handleFacebookSignIn = () => {
         signInByFacebook()
-        .then(result => {
-            const user = result.user;
-            setUser(user);
-        })
-        .catch(error => console.error('error: ', error))
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => console.error('error: ', error))
 
     }
 
@@ -38,15 +44,18 @@ const Register = () => {
         const imgURL = form.img.value;
 
         signUp(email, password)
-        .then(result => {
-            const user = result.user;
-            setUser(user);
-        })
-        .catch(error => console.error('error: ', error))
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => console.error('error: ', error))
     }
 
     return (
         <div className='w-full'>
+            <div class="flex justify-center items-center">
+            </div>
             <div className='flex justify-center items-center'>
                 <div className='bg-white px-16 py-8 rounded-lg shadow-lg shadow-indigo-500/40'>
                     <form onSubmit={handleRegister} className='mb-4'>

@@ -1,18 +1,23 @@
 import React, { useContext } from 'react';
 import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const LogIn = () => {
 
     const {logIn, setUser, signInBy, signInByFacebook} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleGoogleSignIn = () => {
         signInBy()
         .then(result => {
             const user = result.user;
             setUser(user);
+            navigate(from, { replace: true });
         })
         .catch(error => console.error('error: ', error))
 
@@ -23,6 +28,7 @@ const LogIn = () => {
         .then(result => {
             const user = result.user;
             setUser(user);
+            navigate(from, { replace: true });
         })
         .catch(error => console.error('error: ', error))
 
@@ -37,6 +43,7 @@ const LogIn = () => {
         .then(result => {
             const user = result.user;
             setUser(user);
+            navigate(from, { replace: true });
         })
         .catch(error => console.error('error: ', error))
     } 
