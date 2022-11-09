@@ -38,10 +38,10 @@ const Register = () => {
     const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
-        const name = form.name.value;
+        // const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const imgURL = form.img.value;
+        // const imgURL = form.img.value;
 
         signUp(email, password)
             .then(result => {
