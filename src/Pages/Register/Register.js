@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Register = () => {
+
+    const {signUp} = useContext(AuthContext);
+
+    const handleRegister = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const imgURL = form.img.value;
+
+        signUp(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.error('error: ', error))
+    }
+
     return (
         <div className='w-full'>
             <div className='flex justify-center items-center'>
                 <div className='bg-white px-16 py-8 rounded-lg shadow-lg shadow-indigo-500/40'>
-                    <form className='mb-4'>
+                    <form onSubmit={handleRegister} className='mb-4'>
                         <h1 className='text-3xl font-semibold'>Register</h1>
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                             <div>

@@ -1,14 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const LogIn = () => {
+
+    const {logIn, setUser} = useContext(AuthContext);
+
+    const handleLogIn = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        logIn(email, password)
+        .then(result => {
+            const user = result.user;
+            setUser(user);
+        })
+        .catch(error => console.error('error: ', error))
+    } 
+
     return (
         <div className='w-full'>
             <div className='flex justify-center items-center'>
                 <div className='bg-white px-16 py-8 rounded-lg shadow-lg shadow-indigo-500/40'>
-                    <form className='mb-4'>
+                    <form className='mb-4' onSubmit={handleLogIn}>
                         <h1 className='text-3xl font-semibold'>Log In</h1>
                         <div className='grid grid-cols-1 gap-4'>
                             <div className='flex flex-col justify-start'>
