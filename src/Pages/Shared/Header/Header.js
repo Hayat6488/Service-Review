@@ -15,6 +15,7 @@ const Header = () => {
                         <Link to='/' className='mr-6'><button className="btn btn-ghost">Home</button></Link>
                         <Link to='/foods' className='mr-6'><button className="btn btn-ghost">Foods</button></Link>
                         <Link to='/blogs' className='mr-6'><button className="btn btn-ghost">Blogs</button></Link>
+                        <Link to='/login' className='mr-6'><button className="btn btn-ghost">LOG IN</button></Link>
                     </div>
                     <div className="dropdown  dropdown-end lg:hidden">
                         <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -24,6 +25,7 @@ const Header = () => {
                             <li><Link to='/' className='mr-6'>Home</Link></li>
                             <li><Link to='/foods' className='mr-6'>Foods</Link></li>
                             <li><Link to='/blogs' className='mr-6'>Blogs</Link></li>
+                            <li><Link to='/login' className='mr-6'>LOG IN</Link></li>
                         </ul>
                     </div>
                 </div>
