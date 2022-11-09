@@ -6,7 +6,27 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 const LogIn = () => {
 
-    const {logIn, setUser} = useContext(AuthContext);
+    const {logIn, setUser, signInBy, signInByFacebook} = useContext(AuthContext);
+
+    const handleGoogleSignIn = () => {
+        signInBy()
+        .then(result => {
+            const user = result.user;
+            setUser(user);
+        })
+        .catch(error => console.error('error: ', error))
+
+    }
+
+    const handleFacebookSignIn = () => {
+        signInByFacebook()
+        .then(result => {
+            const user = result.user;
+            setUser(user);
+        })
+        .catch(error => console.error('error: ', error))
+
+    }
 
     const handleLogIn = (event) => {
         event.preventDefault();
@@ -47,8 +67,8 @@ const LogIn = () => {
                     <hr />
                     <h1 className='text-2xl font-semibold mt-4 mb-4'>Log In With</h1>
                     <div className='grid grid-cols-1 gap-2'>
-                        <button className="btn btn-outline text-xl"><FcGoogle className='mr-1'></FcGoogle> Log In By Google</button>
-                        <button className="btn btn-outline text-xl text-sky-800"><FaFacebook className='mr-1'></FaFacebook>Log In By Facebook</button>
+                        <button onClick={handleGoogleSignIn} className="btn btn-outline text-xl"><FcGoogle className='mr-1'></FcGoogle> Log In By Google</button>
+                        <button onClick={handleFacebookSignIn} className="btn btn-outline text-xl text-sky-800"><FaFacebook className='mr-1'></FaFacebook>Log In By Facebook</button>
                     </div>
                 </div>
             </div>
