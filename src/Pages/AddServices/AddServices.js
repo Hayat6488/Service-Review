@@ -1,7 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddServices = () => {
+
+    const notify = () => toast("Food Added to Foods Menu successfully");
 
     const handleAddService = event => {
         event.preventDefault();
@@ -27,13 +31,14 @@ const AddServices = () => {
             },
             body: JSON.stringify(food)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            alert('Food Added');
-            form.reset();
-        })
-        .catch(error => console.error(error))
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                alert('Food Added');
+                form.reset();
+                notify();
+            })
+            .catch(error => console.error(error))
     }
 
     return (
@@ -83,6 +88,7 @@ const AddServices = () => {
             <Helmet>
                 <title>DHEKUR: ADD FOODS</title>
             </Helmet>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { FaStar, FaUserAlt, FaTrashAlt } from 'react-icons/fa'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UserReview = ({ review, forceUpdate }) => {
 
-    const { email, comment, image, name, ratings, _id, serviceId} = review;
+    const deleteDone = () => {
+        toast("Successfully Deleted")
+    }
+
+    const editDone = () => {
+        toast("Successfully Edited")
+    }
+
+    const { email, comment, image, name, ratings, _id, serviceId } = review;
 
     const [food, setFood] = useState([])
 
     useEffect(() => {
         fetch(`http://localhost:5000/foods/${serviceId}`)
-        .then(res => res.json())
-        .then(data => setFood(data))
-    },[serviceId])
+            .then(res => res.json())
+            .then(data => setFood(data))
+    }, [serviceId])
 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete this review?');
@@ -23,6 +33,7 @@ const UserReview = ({ review, forceUpdate }) => {
                 .then(data => {
                     console.log(data);
                     forceUpdate();
+                    deleteDone();
                 })
         }
     }
@@ -41,22 +52,23 @@ const UserReview = ({ review, forceUpdate }) => {
         }
 
         fetch(`http://localhost:5000/myreviews/${_id}`, {
-        method: 'PUT',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(updateData)
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateData)
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.modifiedCount > 0){
-                alert('Edit Successful');
-                event.target.reset();
-                forceUpdate();
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    alert('Edit Successful');
+                    event.target.reset();
+                    forceUpdate();
+                    editDone();
+                }
+            })
 
-        
+
     }
 
     return (
@@ -101,6 +113,7 @@ const UserReview = ({ review, forceUpdate }) => {
                 </div>
 
             </div>
+            <ToastContainer></ToastContainer>
 
             {/* Modal Body Part */}
 
@@ -112,7 +125,7 @@ const UserReview = ({ review, forceUpdate }) => {
                             <label className="label">
                                 <span className="label-text text-xl">Ratings</span>
                             </label>
-                            <input type="text" defaultValue={ratings} placeholder="Your rating out of 5" className="input rounded-md input-bordered w-1/3" name='ratings' required/>
+                            <input type="text" defaultValue={ratings} placeholder="Your rating out of 5" className="input rounded-md input-bordered w-1/3" name='ratings' required />
                         </div>
                         <div className="flex justify-start flex-col">
                             <label className="label">
