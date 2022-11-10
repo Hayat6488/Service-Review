@@ -8,7 +8,7 @@ const Main = () => {
     return (
         <div>
             <Header></Header>
-            <div className='flex flex-col-reverse lg:flex-row mt-10 gap-2 px-10'>
+            <div className='flex flex-col-reverse lg:flex-row mt-10 gap-2 px-10 min-h-[61vh]'>
                 <SideBar></SideBar>
                 <Outlet></Outlet>
             </div>
