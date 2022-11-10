@@ -6,7 +6,7 @@ const ReviewCard = ({ review }) => {
     const { email, comment, image, name, ratings } = review;
 
     return (
-        <div className='bg-base-100 w-full py-1 px-4 rounded-md mt-16'>
+        <div className='bg-base-100 w-full py-3 px-6 rounded-md mt-16 p-6'>
             <div className='flex justify-between'>
                 <div className='flex gap-2 mb-2'>
                     {
