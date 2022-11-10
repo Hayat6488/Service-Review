@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet';
 import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -79,6 +80,9 @@ const LogIn = () => {
                     </div>
                 </div>
             </div>
+            <Helmet>
+                <title>DHEKUR: LOG IN</title>
+            </Helmet>
         </div>
     );
 };

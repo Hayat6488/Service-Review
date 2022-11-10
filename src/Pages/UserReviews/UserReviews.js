@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { AuthContext } from '../../Context/AuthProvider';
 import UserReview from './UserReview/UserReview';
 
@@ -23,6 +24,9 @@ const UserReviews = () => {
             {
                 reviews.map(review => <UserReview key={review._id} review={review} forceUpdate={forceUpdate}></UserReview>)
             }
+            <Helmet>
+                <title>DHEKUR: REVIEWS</title>
+            </Helmet>
         </div>
     );
 };

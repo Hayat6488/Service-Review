@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const AddServices = () => {
 
@@ -79,6 +80,9 @@ const AddServices = () => {
                     </form>
                 </div>
             </div>
+            <Helmet>
+                <title>DHEKUR: ADD FOODS</title>
+            </Helmet>
         </div>
     );
 };
