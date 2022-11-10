@@ -1,9 +1,23 @@
 import React from 'react';
 import { FaStar, FaUserAlt, FaTrashAlt } from 'react-icons/fa'
 
-const UserReview = ({ review }) => {
+const UserReview = ({ review, forceUpdate }) => {
 
-    const { email, comment, image, name, ratings } = review;
+    const { email, comment, image, name, ratings, _id } = review;
+
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure you want to delete this review?');
+        if(proceed){
+            fetch(`http://localhost:5000/myreviews/${id}`,{
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                forceUpdate();
+            })
+        }
+    }
 
     return (
         <div className=''>
@@ -37,7 +51,7 @@ const UserReview = ({ review }) => {
                         <button className='btn mr-2 btn-outline'>
                             UPDATE
                         </button>
-                        <button className='btn btn-circle btn-outline'>
+                        <button onClick={() => handleDelete(_id)} className='btn btn-circle btn-outline'>
                             <FaTrashAlt></FaTrashAlt>
                         </button>
                     </div>
