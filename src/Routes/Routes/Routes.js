@@ -5,6 +5,7 @@ import Foods from "../../Pages/Foods/Foods";
 import Home from "../../Pages/Home/Home";
 import LogIn from "../../Pages/LogIn/LogIn";
 import Register from "../../Pages/Register/Register";
+import UserReviews from "../../Pages/UserReviews/UserReviews";
 import AddReview from "../../Utilities/AddReview/AddReview";
 
 export const routes = createBrowserRouter([
@@ -34,6 +35,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/myreviews',
+                element: <UserReviews></UserReviews>
             },
             {
                 path: '/review',

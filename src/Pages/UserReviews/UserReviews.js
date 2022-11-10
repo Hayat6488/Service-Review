@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
+import UserReview from './UserReview/UserReview';
 
 const UserReviews = () => {
 
@@ -7,16 +8,16 @@ const UserReviews = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?serviceId=${user.uid}`)
+        fetch(`http://localhost:5000/myreviews?uid=${user?.uid}`)
         .then(res => res.json())
         .then(data => setReviews(data))
-    },[])
-
-    console.log(reviews);
+    },[user?.uid])
 
     return (
-        <div>
-            
+        <div className='w-full'>
+            {
+                reviews.map(review => <UserReview key={review._id} review={review}></UserReview>)
+            }
         </div>
     );
 };
