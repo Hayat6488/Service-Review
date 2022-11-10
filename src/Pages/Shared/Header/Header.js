@@ -30,7 +30,7 @@ const Header = () => {
                             user?.uid ?
                                 <>
                                     <Link to='/myreviews' className='mr-4'><button className="btn btn-ghost">MY REVIEWS</button></Link>
-                                    <Link to='/addservices' className='mr-4'><button className="btn btn-ghost">ADD SERVICES</button></Link>
+                                    <Link to='/addfoods' className='mr-4'><button className="btn btn-ghost">ADD FOODS</button></Link>
                                     <button onClick={handleLogOut} className="btn btn-ghost mr-4">LOG OUT</button>
                                 </>
                                 :

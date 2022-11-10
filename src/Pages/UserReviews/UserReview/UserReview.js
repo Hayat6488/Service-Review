@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaStar, FaUserAlt, FaTrashAlt } from 'react-icons/fa'
 
 const UserReview = ({ review, forceUpdate }) => {
 
-    const { email, comment, image, name, ratings, _id } = review;
+    const { email, comment, image, name, ratings, _id, serviceId} = review;
+
+    const [food, setFood] = useState([])
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/foods/${serviceId}`)
+        .then(res => res.json())
+        .then(data => setFood(data))
+    },[serviceId])
 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete this review?');
@@ -18,6 +26,8 @@ const UserReview = ({ review, forceUpdate }) => {
                 })
         }
     }
+
+
 
     const handleUpdate = event => {
         event.preventDefault();
@@ -86,6 +96,7 @@ const UserReview = ({ review, forceUpdate }) => {
                     </div>
                 </div>
                 <div>
+                    <h1 className='text-left'>Food Name: {food.serviceName}</h1>
                     <p className='text-left'>{comment}</p>
                 </div>
 

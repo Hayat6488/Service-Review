@@ -2,6 +2,7 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Carousel from './Carousel/Carousel';
 import FoodMenu from './FoodMenu/FoodMenu';
+import Stat from './Stat/Stat';
 
 const Home = () => {
 
@@ -11,6 +12,7 @@ const Home = () => {
         <div>
             <Carousel></Carousel>
             <FoodMenu foods={foods}></FoodMenu>
+            <Stat></Stat>
         </div>
     );
 };
