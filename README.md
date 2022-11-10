@@ -3,3 +3,13 @@
 <h4>
 DHEKUR is a cloud kitchen website usable for local business. It is developed using react. We used tailwind css as css framework. And daisyui as component library. Also we used react router for route, react icons for icons, React Helmet for title, React Photo View, firebase for authentication and hosting.
 </h4>
+
+<hr>
+
+<h1>Basic Features of DHEKUR</h1>
+
+<ul style="list-style-type:disc;">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>
