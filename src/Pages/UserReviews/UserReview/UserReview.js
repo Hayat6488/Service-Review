@@ -18,7 +18,7 @@ const UserReview = ({ review, forceUpdate }) => {
     const [food, setFood] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/foods/${serviceId}`)
+        fetch(`https://dhekur-server.vercel.app/foods/${serviceId}`)
             .then(res => res.json())
             .then(data => setFood(data))
     }, [serviceId])
@@ -26,7 +26,7 @@ const UserReview = ({ review, forceUpdate }) => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete this review?');
         if (proceed) {
-            fetch(`http://localhost:5000/myreviews/${id}`, {
+            fetch(`https://dhekur-server.vercel.app/myreviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -51,7 +51,7 @@ const UserReview = ({ review, forceUpdate }) => {
             comment: comment
         }
 
-        fetch(`http://localhost:5000/myreviews/${_id}`, {
+        fetch(`https://dhekur-server.vercel.app/myreviews/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

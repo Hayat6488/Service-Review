@@ -10,13 +10,13 @@ const UserReviews = () => {
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myreviews?uid=${user?.uid}`, {
+        fetch(`https://dhekur-server.vercel.app/myreviews?uid=${user?.uid}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
             .then(res => {
-                if(res.status === 401 || res.status === 403){
+                if (res.status === 401 || res.status === 403) {
                     logOut();
                 }
                 return res.json()

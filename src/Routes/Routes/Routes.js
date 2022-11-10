@@ -18,17 +18,17 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/food')
+                loader: () => fetch('https://dhekur-server.vercel.app/food')
             },
             {
                 path: '/foods',
                 element: <Foods></Foods>,
-                loader: () => fetch('http://localhost:5000/foods')
+                loader: () => fetch('https://dhekur-server.vercel.app/foods')
             },
             {
                 path: '/foods/:_id',
                 element: <FoodDetails></FoodDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/foods/${params._id}`)
+                loader: ({ params }) => fetch(`https://dhekur-server.vercel.app/foods/${params._id}`)
             },
             {
                 path: '/login',
