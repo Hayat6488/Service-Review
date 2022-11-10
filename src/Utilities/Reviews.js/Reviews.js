@@ -11,8 +11,6 @@ const Reviews = ({ serviceId, ignored }) => {
             .then(data => setReviews(data))
     }, [serviceId, ignored])
 
-    console.log(reviews);
-
     return (
         <div>
             {

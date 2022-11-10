@@ -21,6 +21,7 @@ const FoodDetails = () => {
         const userName = user?.displayName;
         const userImg = user?.photoURL;
         const userEmail = user?.email;
+        const uid = user?.uid;
 
         const review = {
             serviceId: _id,
@@ -28,7 +29,8 @@ const FoodDetails = () => {
             image: userImg,
             comment: comment,
             ratings: ratings,
-            email: userEmail
+            email: userEmail,
+            uid: uid
         }
 
 
