@@ -23,6 +23,15 @@ const FoodDetails = () => {
         const userEmail = user?.email;
         const uid = user?.uid;
 
+        const date = new Date();
+
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+
+        let currentDate = `${day}-${month}-${year}`;
+        var timestamp = new Date().getTime();
+
         const review = {
             serviceId: _id,
             name: userName,
@@ -30,7 +39,9 @@ const FoodDetails = () => {
             comment: comment,
             ratings: ratings,
             email: userEmail,
-            uid: uid
+            uid: uid,
+            date: currentDate,
+            time: timestamp
         }
 
 
