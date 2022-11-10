@@ -7,7 +7,7 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 const LogIn = () => {
 
-    const {logIn, setUser, signInBy, signInByFacebook} = useContext(AuthContext);
+    const { logIn, setUser, signInBy, signInByFacebook } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -15,23 +15,23 @@ const LogIn = () => {
 
     const handleGoogleSignIn = () => {
         signInBy()
-        .then(result => {
-            const user = result.user;
-            setUser(user);
-            navigate(from, { replace: true });
-        })
-        .catch(error => console.error('error: ', error))
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => console.error('error: ', error))
 
     }
 
     const handleFacebookSignIn = () => {
         signInByFacebook()
-        .then(result => {
-            const user = result.user;
-            setUser(user);
-            navigate(from, { replace: true });
-        })
-        .catch(error => console.error('error: ', error))
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => console.error('error: ', error))
 
     }
 
@@ -41,13 +41,33 @@ const LogIn = () => {
         const email = form.email.value;
         const password = form.password.value;
         logIn(email, password)
-        .then(result => {
-            const user = result.user;
-            setUser(user);
-            navigate(from, { replace: true });
-        })
-        .catch(error => console.error('error: ', error))
-    } 
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+
+                const currentUser = {
+                    uid: user.uid
+                }
+
+                //get jwt token
+
+                fetch('http://localhost:5000/jwt', {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    localStorage.setItem('token', data.token);
+                    navigate(from, { replace: true });
+                })
+
+            })
+            .catch(error => console.error('error: ', error))
+    }
 
     return (
         <div className='w-full'>
