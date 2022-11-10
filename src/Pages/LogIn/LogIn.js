@@ -13,6 +13,8 @@ const LogIn = () => {
 
     const from = location.state?.from?.pathname || '/';
 
+    // Google sign In
+
     const handleGoogleSignIn = () => {
         signInBy()
             .then(result => {
@@ -24,6 +26,8 @@ const LogIn = () => {
 
     }
 
+    // facebook sign in
+
     const handleFacebookSignIn = () => {
         signInByFacebook()
             .then(result => {
@@ -34,6 +38,8 @@ const LogIn = () => {
             .catch(error => console.error('error: ', error))
 
     }
+
+    // log in using email, password
 
     const handleLogIn = (event) => {
         event.preventDefault();
@@ -49,7 +55,7 @@ const LogIn = () => {
                     uid: user.uid
                 }
 
-                //get jwt token
+                //fetching api to get jwt token
 
                 fetch('https://dhekur-server.vercel.app/jwt', {
                     method: "POST",
@@ -100,6 +106,9 @@ const LogIn = () => {
                     </div>
                 </div>
             </div>
+
+                {/* title */}
+
             <Helmet>
                 <title>DHEKUR: LOG IN</title>
             </Helmet>

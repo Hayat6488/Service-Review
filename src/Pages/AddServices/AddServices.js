@@ -7,6 +7,8 @@ const AddServices = () => {
 
     const notify = () => toast("Food Added to Foods Menu successfully");
 
+    // Adding any service to DB
+
     const handleAddService = event => {
         event.preventDefault();
         const form = event.target;
@@ -23,6 +25,8 @@ const AddServices = () => {
             ratings: ratings,
             des: des
         }
+
+        // Fetching api to POST 
 
         fetch('https://dhekur-server.vercel.app/foods', {
             method: 'POST',
@@ -85,9 +89,15 @@ const AddServices = () => {
                     </form>
                 </div>
             </div>
+
+                {/* title */}
+
             <Helmet>
                 <title>DHEKUR: ADD FOODS</title>
             </Helmet>
+
+            {/* Toast */}
+
             <ToastContainer></ToastContainer>
         </div>
     );

@@ -13,6 +13,8 @@ const FoodDetails = () => {
 
     const { img, des, price, ratings, serviceName, _id } = food;
 
+    // Adding Review
+
     const handleReview = event => {
         event.preventDefault();
         const form = event.target;
@@ -44,7 +46,7 @@ const FoodDetails = () => {
             time: timestamp
         }
 
-
+        // fetching api to post review
 
         fetch('https://dhekur-server.vercel.app/reviews', {
             method: 'POST',

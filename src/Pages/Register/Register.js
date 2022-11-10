@@ -13,6 +13,8 @@ const Register = () => {
 
     const from = location.state?.from?.pathname || '/';
 
+    // Google sign in
+
     const handleGoogleSignIn = () => {
         signInBy()
             .then(result => {
@@ -25,6 +27,8 @@ const Register = () => {
 
     }
 
+    // Facebook sign in
+
     const handleFacebookSignIn = () => {
         signInByFacebook()
             .then(result => {
@@ -35,6 +39,8 @@ const Register = () => {
             .catch(error => console.error('error: ', error))
 
     }
+
+    // register using email and password
 
     const handleRegister = event => {
         event.preventDefault();

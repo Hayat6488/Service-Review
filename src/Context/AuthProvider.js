@@ -14,25 +14,35 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
 
+    // Sign in by google
+
     const signInBy = () => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
+
+    // Sign in by facebook
 
     const signInByFacebook = () => {
         setLoading(true);
         return signInWithPopup(auth, facebookProvider);
     }
 
+    // Sign up by email, password
+
     const signUp = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
+    // Sign in by email, password
+
     const logIn = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
+
+    // logout
 
     const logOut = () => {
         return signOut(auth)
